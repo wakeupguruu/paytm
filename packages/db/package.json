@@ -7,7 +7,10 @@
     "devDependencies": {
         "prisma": "5.11.0"
     },
+    "scripts": {
+        "build": "tsc"
+    },
     "exports": {
-        "./client": "./index.ts"
+        "./client": "./dist/index.js"
     }
 }
