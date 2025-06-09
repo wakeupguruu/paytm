@@ -8,6 +8,10 @@ import { authOptions } from "../../lib/auth";
 
 async function getBalance() {
     const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
+
+        throw new Error("User ID is missing from session");
+    }
     const balance = await prisma.balance.findFirst({
         where: {
             userId: Number(session?.user?.id)
@@ -26,6 +30,8 @@ async function getOnRampTransactions() {
             userId: Number(session?.user?.id)
         }
     });
+   
+    
     return txns.map(t => ({
         time: t.startTime,
         amount: t.amount,
@@ -35,10 +41,11 @@ async function getOnRampTransactions() {
 }
 
 export default async function() {
+    const session = await getServerSession(authOptions);
     const balance = await getBalance();
     const transactions = await getOnRampTransactions();
 
-    return <div className="w-screen">
+    return <div className="w-full">
         <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
             Transfer
         </div>

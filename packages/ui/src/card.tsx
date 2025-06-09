@@ -1,5 +1,5 @@
 export function Card({
-  className,
+  className = "",
   title,
   children,
   href,
@@ -10,16 +10,23 @@ export function Card({
   href: string;
 }): JSX.Element {
   return (
-    <a
-      className={className}
-      href={`${href}?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"`}
-      rel="noopener noreferrer"
-      target="_blank"
+    <div
+      className={`bg-white rounded-xl shadow-md p-6 w-full max-w-xl ${className}`}
     >
-      <h2 className="text-sm">
-        {title} <span>-&gt;</span>
-      </h2>
-      <p>{children}</p>
-    </a>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold">{title}</h2>
+        {href && (
+          <a
+            // href={href}
+            className="text-sm text-blue-600 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            →
+          </a>
+        )}
+      </div>
+      <div>{children}</div>
+    </div>
   );
 }
