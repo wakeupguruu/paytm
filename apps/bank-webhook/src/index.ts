@@ -17,7 +17,7 @@ app.post("/hdfcWebhook", async (req, res) => {
         where: {
             token: paymentInformation.token
         }
-    }).then((txn) => {
+    }).then((txn: any) => {
         if(!txn || txn.status === "Processing") {
             res.status(400).json({
                 message: "Transaction is already Completed"

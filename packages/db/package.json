@@ -2,13 +2,13 @@
     "name": "@repo/db",
     "version": "0.0.0",
     "dependencies": {
-        "@prisma/client": "^5.11.0"
+        "@prisma/client": "^6.10.1"
     },
     "devDependencies": {
-        "prisma": "5.11.0"
+        "prisma": "6.10.1"
     },
     "scripts": {
-        "build": "tsc"
+    "build": "prisma generate && tsc"
     },
     "exports": {
         "./client": "./dist/index.js"
