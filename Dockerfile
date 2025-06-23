@@ -13,7 +13,7 @@ RUN npm install
 RUN cd packages/db && npx prisma generate && npx tsc -b && cd ../..
 
 # Can you filter the build down to just one app?
-RUN npx turbo run build --filter=apps/user-app...
+RUN npm run build
 
 
 CMD ["npm", "run", "start-user-app"]
