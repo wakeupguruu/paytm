@@ -29,3 +29,5 @@ jobs:
     - name: Verify Pushed Image
       run: docker pull guruvyas19/paytm
       
+
+# Trigger redeploy
